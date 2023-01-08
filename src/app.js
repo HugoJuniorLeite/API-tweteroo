@@ -42,9 +42,10 @@ app.post("/tweets", (req,res)=>{
             return res.send("UNAUTHORIZED")
         };
     tweets.unshift(message);
-    return res.status(201).send("CREATED")});
+    return res.status(201).send("CREATED");
+});
     
-app.get("/tweets", (req,res)=>{    
+    app.get("/tweets", (req,res)=>{    
    let tenTweets = tweets.slice(0,10);
     return res.send(tenTweets)
 });
