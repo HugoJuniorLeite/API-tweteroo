@@ -23,7 +23,7 @@ app.post("/sign-up",(req,res)=>{
 
 app.post("/tweets", (req,res)=>{    
     const { tweet} = req.body;
-    const use =req.headers.user
+    const use =req.headers.user;
     
     const message = 
         {
@@ -42,12 +42,14 @@ app.post("/tweets", (req,res)=>{
     
 app.get("/tweets", (req,res)=>{    
    let tenTweets = tweets.slice(0,10);
-    return res.send( tenTweets)});
+    return res.send(tenTweets)
+});
 
     app.get("/tweets/:name", (req,res)=>{
    const name = req.params.name;
-   const username = cadastro.find( item => item.username === name )
-         return res.send(username)});
+   const username = cadastro.find( item => item.username === name );
+         return res.send(username)
+        });
      
 
     const PORT =5000;
