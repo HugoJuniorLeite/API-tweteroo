@@ -44,7 +44,6 @@ app.get("/tweets", (req,res)=>{
    let tenTweets = tweets.slice(0,10);
     return res.send( tenTweets)});
 
-    
     app.get("/tweets/:name", (req,res)=>{
    const name = req.params.name;
    const username = cadastro.find( item => item.username === name )
