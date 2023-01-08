@@ -22,7 +22,7 @@ app.post("/sign-up",(req,res)=>{
     }
     useravatar =avatar;
     cadastro.push(user);
-   return res.send("OK")
+   return res.status(201).send("CREATED");
 });
 
 app.post("/tweets", (req,res)=>{    
