@@ -49,8 +49,8 @@ app.post("/tweets", (req,res)=>{
 
     app.get("/tweets/:name", (req,res)=>{
    const name = req.params.name;
-   const username = cadastro.find( item => item.username === name );
-         return res.send(tweets)
+   const tweetUser = tweets.filter( item => item.username === name );
+         return res.send(tweetUser)
         });
      
 
