@@ -13,16 +13,13 @@ let user={};
 app.post("/sign-up",(req,res)=>{
     const {username, avatar }=req.body;
     user ={username, avatar};
-    if( !user.username || !avatar){
+    if( !user.username || !avatar || isNaN(user.username)){
         return res.status(400).send("Todos os campos são obrigatórios!")
     };
 
-    // if( typeof user.username !== string){
-        // return res.status(400).send("Todos os campos são obrigatórios!")
-    // }
     useravatar =avatar;
     cadastro.push(user);
-   return res.status(201).send("CREATED");
+   return res.status(201).send("CREATED")
 });
 
 app.post("/tweets", (req,res)=>{    
@@ -42,7 +39,7 @@ app.post("/tweets", (req,res)=>{
             return res.send("UNAUTHORIZED")
         };
     tweets.unshift(message);
-    return res.status(201).send("CREATED");
+    return res.status(201).send("CREATED")
 });
     
     app.get("/tweets", (req,res)=>{    
