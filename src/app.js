@@ -35,16 +35,33 @@ app.post("/tweets", (req,res)=>{
         if( !tweet || typeof tweet !== "string" ){
             return res.status(400).send("Todos os campos são obrigatórios!")
         };
-        if( !username){
+        if( !use && !username){
             return res.status(401).send("UNAUTHORIZED")
         };
     tweets.unshift(message);
     return res.status(201).send("CREATED")
 });
     
-    app.get("/tweets", (req,res)=>{    
-   let tenTweets = tweets.slice(0,10);
+    app.get("/tweets", (req,res)=>{
+    const page = req.query.page
+
+    let tenTweets ='' ;
+
+    if( 1 == page){
+    tenTweets = tweets.slice(0,10)}
+   
+   if( 2 == Number(page)){
+    tenTweets = tweets.slice(11,20)}
+    
+
+    if( 3 == Number(page)){
+        tenTweets = tweets.slice(21,30)}
+   ;
+
+
     return res.send(tenTweets)
+
+
 });
 
     app.get("/tweets/:name", (req,res)=>{
