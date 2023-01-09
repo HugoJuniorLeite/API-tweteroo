@@ -49,12 +49,20 @@ app.post("/tweets", (req,res)=>{
 
     if(!page){
         tenTweets = tweets.slice(0,10)
-    }else if( 1 == page){
+    }else if( 1 == Number(page)){
     tenTweets = tweets.slice(0,10)
     }else if( 2 == Number(page)){
     tenTweets = tweets.slice(10,20)
     }else if( 3 == Number(page)){
         tenTweets = tweets.slice(20,30)};
+
+if( Number(page) == 2 && !tenTweets[11]){
+    return res.sendStatus(400)
+}
+
+if( Number(page) == 3 && !tenTweets[21]){
+    return res.sendStatus(400)
+}
 
     return res.send(tenTweets)
 
