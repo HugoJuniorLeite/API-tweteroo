@@ -23,12 +23,12 @@ app.post("/sign-up",(req,res)=>{
 });
 
 app.post("/tweets", (req,res)=>{    
-    const { tweet} = req.body;
+    const { username, tweet} = req.body;
     const use =req.headers.user;
     
     const message = 
         {
-            username : use,
+            username : !use?  username : use,
             avatar: useravatar,
             tweet 
         };
