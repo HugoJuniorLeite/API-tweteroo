@@ -28,14 +28,14 @@ app.post("/tweets", (req,res)=>{
     
     const message = 
         {
-            username : !use?  username : use,
+            username: !use?  username : use,
             avatar: useravatar,
             tweet 
         };
         if( !tweet || typeof tweet !== "string" ){
             return res.status(400).send("Todos os campos são obrigatórios!")
         };
-        if( !use ){
+        if( !use && !username  ){
             return res.send("UNAUTHORIZED")
         };
     tweets.unshift(message);
