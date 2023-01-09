@@ -34,12 +34,12 @@ app.post("/tweets", (req,res)=>{
             avatar: useravatar,
             tweet 
         };
-        if( !tweet || typeof tweet !== "string" || (!req.body.username && !use) ){
+        if( !tweet || typeof tweet !== "string"){
             return res.status(400).send("Todos os campos são obrigatórios!")
         };
-        // if( !use && !username){
-            // return res.status(401).send("UNAUTHORIZED")
-        // };
+         if(!username){
+             return res.status(401).send("UNAUTHORIZED")
+         };
     tweets.unshift(message);
     return res.status(201).send("CREATED")
 });
