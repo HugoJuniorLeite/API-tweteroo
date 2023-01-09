@@ -32,7 +32,7 @@ app.post("/tweets", (req,res)=>{
             avatar: useravatar,
             tweet 
         };
-        if( !tweet || typeof tweet !== "string" || !username && !use ){
+        if( !tweet || typeof tweet !== "string" || (!username && !use) ){
             return res.status(400).send("Todos os campos são obrigatórios!")
         };
         // if( !use && !username){
