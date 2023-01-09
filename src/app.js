@@ -35,7 +35,7 @@ app.post("/tweets", (req,res)=>{
         if( !tweet || typeof tweet !== "string" ){
             return res.status(400).send("Todos os campos são obrigatórios!")
         };
-        if( !use && !username){
+        if( !use == !username && !username){
             return res.status(401).send("UNAUTHORIZED")
         };
     tweets.unshift(message);
