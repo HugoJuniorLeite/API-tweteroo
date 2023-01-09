@@ -45,18 +45,16 @@ app.post("/tweets", (req,res)=>{
     app.get("/tweets", (req,res)=>{
     const page = req.query.page
 
-    let tenTweets ='' ;
+    let tenTweets =''
 
-    if( 1 == page){
-    tenTweets = tweets.slice(0,10)}
-   
-   if( 2 == Number(page)){
-    tenTweets = tweets.slice(11,20)}
-    
-
-    if( 3 == Number(page)){
-        tenTweets = tweets.slice(21,30)}
-   ;
+    if(!page){
+        tenTweets = tweets.slice(0,10)
+    }else if( 1 == page){
+    tenTweets = tweets.slice(0,10)
+    }else if( 2 == Number(page)){
+    tenTweets = tweets.slice(11,20)
+    }else if( 3 == Number(page)){
+        tenTweets = tweets.slice(21,30)};
 
 
     return res.send(tenTweets)
