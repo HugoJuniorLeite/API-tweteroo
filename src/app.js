@@ -24,11 +24,9 @@ app.post("/sign-up",(req,res)=>{
 
 app.post("/tweets", (req,res)=>{    
     const { username, tweet} = req.body;
-    const use =req.headers.user;
+
     
-    if(!username && !use){
-            return res.status(401).send("UNAUTHORIZED")
-        };
+    const use =req.headers.user;
     
     const message = 
         {
@@ -36,10 +34,12 @@ app.post("/tweets", (req,res)=>{
             avatar: useravatar,
             tweet 
         };
-        if( !tweet || typeof tweet !== "string" || !use ){
+        if( !tweet || typeof tweet !== "string" || (!req.body.username && !use) ){
             return res.status(400).send("Todos os campos são obrigatórios!")
         };
-        
+        // if( !use && !username){
+            // return res.status(401).send("UNAUTHORIZED")
+        // };
     tweets.unshift(message);
     return res.status(201).send("CREATED")
 });
