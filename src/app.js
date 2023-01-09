@@ -45,6 +45,10 @@ app.post("/tweets", (req,res)=>{
     app.get("/tweets", (req,res)=>{
     const page = req.query.page
 
+    if(Number(page) <=0 ){
+        return res.status(400).send("UNAUTHORIZED")
+    }
+
     let tenTweets =''
 
     if(!page){
