@@ -24,11 +24,11 @@ app.post("/sign-up",(req,res)=>{
 
 app.post("/tweets", (req,res)=>{    
     const { username, tweet} = req.body;
-     if(!username){
-             return res.status(401).send("UNAUTHORIZED")
-         };
-
     const use =req.headers.user;
+    
+    if(!username && !use){
+            return res.status(401).send("UNAUTHORIZED")
+        };
     
     const message = 
         {
