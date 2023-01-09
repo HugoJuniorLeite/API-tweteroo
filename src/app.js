@@ -52,13 +52,11 @@ app.post("/tweets", (req,res)=>{
     }else if( 1 == page){
     tenTweets = tweets.slice(0,10)
     }else if( 2 == Number(page)){
-    tenTweets = tweets.slice(11,20)
+    tenTweets = tweets.slice(10,20)
     }else if( 3 == Number(page)){
-        tenTweets = tweets.slice(21,30)};
-
+        tenTweets = tweets.slice(20,30)};
 
     return res.send(tenTweets)
-
 
 });
 
@@ -66,8 +64,7 @@ app.post("/tweets", (req,res)=>{
    const name = req.params.name;
    const tweetUser = tweets.filter( item => item.username === name );
          return res.send(tweetUser)
-        });
-     
+        });     
 
     const PORT =5000;
 
